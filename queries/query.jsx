@@ -29,3 +29,14 @@ export function useBuscarInfoQuery(params) {
 
     return dogs;
 };
+
+export async function fetchRandomDog() {
+    try {
+      const response = await axios.get('https://dog.ceo/api/breeds/image/random');
+      const imageURL = response.data.message;
+      return imageURL;
+    } catch (error) {
+      console.error('Error al obtener la foto del perro:', error);
+      // Manejo del error, por ejemplo, mostrar un mensaje al usuario
+    }
+  }
