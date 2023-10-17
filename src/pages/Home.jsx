@@ -28,75 +28,128 @@ const Home = () => {
   };
 
   return (
-    <Grid container spacing={10} style={{ width: "100vw" }}>
-      <Grid item xs={4}>
-        <h2>Perro Candidato</h2>
-        <div style={{ maxWidth: "100%", overflow: "hidden" }}>
+  <Grid container spacing={"10px"} style={{ maxWidth: "100%" }}>
+    <Grid item xs={4}>
+      <div>
+        <center>
+          <h2>Perro Candidato</h2>
+        </center>
+      </div>
+      <div style={{ width:"100%", heigth: "800px", overflow: "hidden" }}>
+        <center>
           <Dog onAccept={handleAccept} onReject={handleReject} />
-        </div>
-      </Grid>
-      <Grid item xs={4}>
-        <h2>Perros Aceptados</h2>
-        <div style={{ maxHeight: "400px", overflowY: "scroll" }}>
-          {acceptedDogs.map((dog, index) => (
-            <div key={index}>
-              <img src={dog.image} alt="Perro" style={{ maxWidth: "100%" }} />
-              <p>{dog.name}</p>
-              {dog.showDescription && <p>{dog.description}</p>}
-              <Button 
-                variant="contained" 
-                onClick={() => handleToggleDescription(dog, setAcceptedDogs)}
-              >
-                {dog.showDescription ? "Ocultar Descripción" : "Mostrar Descripción"}
-              </Button><br/>
-              <Button 
-                variant="contained" 
-                onClick={() => handleRepent(dog, setAcceptedDogs, setRejectedDogs)}
-              >
-                Arrepentirse
-              </Button><br/>
-              <Button 
-                variant="contained" 
-                onClick={() => handleRemove(dog, setAcceptedDogs)}
-              >
-                Eliminar
-              </Button>
-            </div>
-          ))}
-        </div>
-      </Grid>
-      <Grid item xs={4}>
-        <h2>Perros Rechazados</h2>
-        <div style={{ maxHeight: "400px", overflowY: "scroll" }}>
-          {rejectedDogs.map((dog, index) => (
-            <div key={index}>
-              <img src={dog.image} alt="Perro" style={{ maxWidth: "100%" }} />
-              <p>{dog.name}</p>
-              {dog.showDescription && <p>{dog.description}</p>}
-              <Button 
-                variant="contained" 
-                onClick={() => handleToggleDescription(dog, setRejectedDogs)}
-              >
-                {dog.showDescription ? "Ocultar Descripción" : "Mostrar Descripción"}
-              </Button><br/>
-              <Button 
-                variant="contained" 
-                onClick={() => handleRepent(dog, setRejectedDogs, setAcceptedDogs)}
-              >
-                Arrepentirse
-              </Button><br/>
-              <Button 
-                variant="contained" 
-                onClick={() => handleRemove(dog, setRejectedDogs)}
-              >
-                Eliminar
-              </Button>
-            </div>
-          ))}
-        </div>
-      </Grid>
+        </center>
+      </div>
     </Grid>
-  );
+    <Grid item xs={4}>
+      <div>
+        <center>
+        <h2>Aceptados</h2>
+        </center>
+      </div>
+      <div 
+        style={{width:"100%",  height: "800px", overflowY: "scroll" }}>
+        {acceptedDogs.map((dog, index) => (
+        <div key={index}>
+          <center>
+            <img 
+              src={dog.image} alt="Perro" 
+              style={{ maxWidth: "100%" }}
+            />
+            </center>
+          <div>
+            <p>{dog.name}</p>
+            {dog.showDescription && <p>{dog.description}</p>}
+          </div> 
+          
+          <div>
+            <center>
+            <div>
+              <Button
+                  variant="contained"
+                  onClick={() => handleToggleDescription(dog, setAcceptedDogs)}
+                  style={{ backgroundColor: "green", color: "white" }}
+                >
+                {dog.showDescription ? "Ocultar Descripción" : "Mostrar Descripción"}
+              </Button>
+            </div>
+            <div>
+              <Button
+                variant="contained"
+                onClick={() => handleRepent(dog, setAcceptedDogs, setRejectedDogs)}
+                style={{ backgroundColor: "red", color: "white" }}
+                >
+                Arrepentirse
+              </Button>
+            </div>
+            <div>
+              <Button
+                variant="contained"
+                onClick={() => handleRemove(dog, setAcceptedDogs)}
+                style={{ backgroundColor: "red", color: "white" }}
+                >
+                Borrar
+              </Button>
+            </div>
+            </center>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Grid>
+  <Grid item xs={4}>
+    <div>
+      <center>
+          <h2>Rechazados</h2>
+      </center>
+    </div>
+    <div>
+      <center>
+        <div 
+          style={{width:"100%", height: "800px", overflowY: "scroll" }}>
+          {rejectedDogs.map((dog, index) => 
+          (
+            <div key={index}>
+                <img src={dog.image} alt="Perro" style={{ maxWidth: "100%" }} />
+                <p>{dog.name}</p>
+                {dog.showDescription && <p>{dog.description}</p>}
+              <div>
+                <Button
+                  variant="contained"
+                  onClick={() => handleToggleDescription(dog, setRejectedDogs)}
+                  style={{ backgroundColor: "green", color: "white" }}
+                  >
+                  {dog.showDescription ? "Ocultar Descripción" : "Mostrar Descripción"}
+                </Button>
+              </div>
+
+              <div>
+                <Button
+                  variant="contained"
+                  onClick={() => handleRepent(dog, setRejectedDogs, setAcceptedDogs)}
+                  style={{ backgroundColor: "green", color: "white" }}
+                  >
+                  Arrepentirse
+                </Button>
+              </div>
+              <div>
+                <Button
+                  variant="contained"
+                  onClick={() => handleRemove(dog, setRejectedDogs)}
+                  style={{ backgroundColor: "red", color: "white" }}
+                  >
+                  Borrar
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </center>
+    </div>
+  </Grid>
+
+</Grid>//final del grid principal
+  );// el return
 };
 
 export default Home;

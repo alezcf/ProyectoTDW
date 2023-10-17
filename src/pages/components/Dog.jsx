@@ -42,24 +42,41 @@ export default function Dog({ onAccept, onReject }) {
   };
 
   return (
-    <div>
-      {isFetching ? ( // Muestra el loader si isFetching es true
-        <div>
-          <CircularProgress />
-        </div>
-      ) : (
-        <div>
-          <h2>Nombre: {dogData.name}</h2>
-          <img src={dogData.image} alt='Perro' />
-          <p>{dogData.description}</p>
-          <button onClick={handleAccept} disabled={isFetching}>
-            Aceptar
-          </button>
-          <button onClick={handleReject} disabled={isFetching}>
-            Rechazar
-          </button>
-        </div>
-      )}
+<div className="tinder-card">
+  {isFetching ? (
+    <div className="loading-spinner">
+      <CircularProgress />
     </div>
+  ) : (
+    <div>
+      <div>
+      <img style={{width:"400px", heigth: "800px" }} className="dog-image" src={dogData.image} alt="Perro" />
+      </div>
+    
+      <div className="dog-info">
+        <h2 className="dog-name">{dogData.name}</h2>
+        <p className="dog-description">{dogData.description}</p>
+      </div>
+      <div className="action-buttons">
+        <button 
+          className="accept-button" 
+          onClick={handleAccept} 
+          disabled={isFetching}
+          style={{ backgroundColor: "green", color: "white" }}
+          >
+          Aceptar
+        </button>
+        <button 
+        className="reject-button" 
+        onClick={handleReject} 
+        disabled={isFetching}
+        style={{ backgroundColor: "red", color: "white" }}
+        >
+          Rechazar
+        </button>
+      </div>
+    </div>
+  )}
+</div>
   );
 }
