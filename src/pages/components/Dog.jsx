@@ -50,7 +50,7 @@ export default function Dog({ onAccept, onReject }) {
   ) : (
     <div>
       <div>
-      <img style={{width:"400px", heigth: "800px" }} className="dog-image" src={dogData.image} alt="Perro" />
+      <img style={{width:"100%", heigth: "600px" }} className="dog-image" src={dogData.image} alt="Perro" />
       </div>
     
       <div className="dog-info">

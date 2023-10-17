@@ -28,14 +28,14 @@ const Home = () => {
   };
 
   return (
-  <Grid container spacing={"10px"} style={{ maxWidth: "100%" }}>
+  <Grid container spacing={"20px"} style={{ maxWidth: "100%" }}>
     <Grid item xs={4}>
       <div>
         <center>
           <h2>Perro Candidato</h2>
         </center>
       </div>
-      <div style={{ width:"100%", heigth: "800px", overflow: "hidden" }}>
+      <div style={{ width:"100%", heigth: "100%", overflow: "hidden" }}>
         <center>
           <Dog onAccept={handleAccept} onReject={handleReject} />
         </center>
@@ -48,18 +48,23 @@ const Home = () => {
         </center>
       </div>
       <div 
-        style={{width:"100%",  height: "800px", overflowY: "scroll" }}>
+        style={{width:"100%",  height: "1200px", overflowY: "scroll" }}>
         {acceptedDogs.map((dog, index) => (
         <div key={index}>
           <center>
             <img 
               src={dog.image} alt="Perro" 
-              style={{ maxWidth: "100%" }}
+              style={{ 
+                maxWidth: "100%",
+                height: "500px"
+              }}
             />
             </center>
           <div>
+            <center>
             <p>{dog.name}</p>
             {dog.showDescription && <p>{dog.description}</p>}
+            </center>
           </div> 
           
           <div>
@@ -106,7 +111,7 @@ const Home = () => {
     <div>
       <center>
         <div 
-          style={{width:"100%", height: "800px", overflowY: "scroll" }}>
+          style={{width:"100%", height: "1200px", overflowY: "scroll" }}>
           {rejectedDogs.map((dog, index) => 
           (
             <div key={index}>
